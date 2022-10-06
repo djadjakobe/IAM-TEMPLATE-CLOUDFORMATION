@@ -1,4 +1,4 @@
- AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: '2010-09-09'
 Resources:
   CREATEFOO:
     Type: AWS::IAM::User
@@ -12,6 +12,5 @@ Resources:
   NestedStack:
     Type: 'AWS::CloudFormation::Stack'
     Properties:
-      TemplateURL: https://assignment-codix-1.s3.amazo naws.com/cfn-nested-stack.yaml
+      TemplateURL: 'https://assignment-codix-1.s3.amazonaws.com/cfn-nested-stack.yaml'
       TimeoutInMinutes: '60'
-
