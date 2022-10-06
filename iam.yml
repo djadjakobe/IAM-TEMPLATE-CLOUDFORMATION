@@ -1,25 +1,17 @@
-
-AWSTemplateFormatVersion: '2010-09-09'
+ AWSTemplateFormatVersion: '2010-09-09'
 Resources:
-  BOSS:
-    Type: AWS::IAM::Group
-    Properties: 
-      GroupName: Dev
-      ManagedPolicyArns: 
-        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
-  CREATEFOOINBOSS:
+  CREATEFOO:
     Type: AWS::IAM::User
     Properties: 
       Groups: 
-        - Ref: BOSS
+        - Dev
       LoginProfile: 
         Password: mypassword
       UserName: foo
-  CREATEBAAINBOSS:
-    Type: AWS::IAM::User
-    Properties: 
-      Groups: 
-        - Ref: BOSS
-      LoginProfile: 
-        Password: mypassword
-      UserName: baa
+
+  NestedStack:
+    Type: 'AWS::CloudFormation::Stack'
+    Properties:
+      TemplateURL: https://assignment-codix-1.s3.amazo naws.com/cfn-nested-stack.yaml
+      TimeoutInMinutes: '60'
+
